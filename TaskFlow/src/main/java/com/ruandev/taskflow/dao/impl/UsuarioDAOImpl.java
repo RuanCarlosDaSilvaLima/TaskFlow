@@ -4,6 +4,8 @@ import com.ruandev.taskflow.dao.interfaces.UsuarioDAO;
 import com.ruandev.taskflow.db.DBConnection;
 import com.ruandev.taskflow.entities.Usuario;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,22 +14,35 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
     @Override
     public void insert(Usuario usuario) throws SQLException {
-        String sql = "INSERT INTO Usuario (nome, email, senha, foto_perfil) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO usuario (nome, email, senha, foto_perfil) VALUES (?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            stmt.setString(1, usuario.getNome());
-            stmt.setString(2, usuario.getEmail());
-            stmt.setString(3, usuario.getSenha());
-            stmt.setBytes(4, usuario.getFotoPerfil());
-            stmt.executeUpdate();
+             PreparedStatement st = conn.prepareStatement(sql)) {
 
-            try (ResultSet rs = stmt.getGeneratedKeys()) {
-                if (rs.next()) {
-                    usuario.setId(rs.getInt(1));
+            st.setString(1, usuario.getNome());
+            st.setString(2, usuario.getEmail());
+            st.setString(3, usuario.getSenha());
+
+            // Foto: se for null, carrega icone-usuario.png
+            byte[] fotoBytes = usuario.getFotoPerfil();
+
+            if (fotoBytes == null) {
+                try (InputStream is = getClass().getResourceAsStream("/com/ruandev/taskflow/imagens/icone-usuario.png")) {
+                    if (is != null) {
+                        fotoBytes = is.readAllBytes();
+                    } else {
+                        throw new RuntimeException("Imagem padrão não encontrada!");
+                    }
+                } catch (IOException e) {
+                    throw new SQLException("Erro ao carregar imagem padrão", e);
                 }
             }
+
+            st.setBytes(4, fotoBytes);
+
+            st.executeUpdate();
         }
     }
+
 
     @Override
     public Usuario findById(int id) throws SQLException {
@@ -107,7 +122,28 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                     usuario.setNome(rs.getString("nome"));
                     usuario.setEmail(rs.getString("email"));
                     usuario.setSenha(rs.getString("senha"));
-                    usuario.setFotoPerfil(rs.getBytes("foto"));
+                    usuario.setFotoPerfil(rs.getBytes("foto_perfil"));
+                    return usuario;
+                }
+            }
+        }
+        return null;
+    }
+    @Override
+    public Usuario findByEmailESenhaNoImage(String email, String senha) throws SQLException {
+        String sql = "SELECT  id_usuario, nome, email ,senha FROM usuario WHERE email = ? AND senha = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            stmt.setString(2, senha);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Usuario usuario = new Usuario();
+                    usuario.setId(rs.getInt("id_usuario"));
+                    usuario.setNome(rs.getString("nome"));
+                    usuario.setEmail(rs.getString("email"));
+                    usuario.setSenha(rs.getString("senha"));
                     return usuario;
                 }
             }

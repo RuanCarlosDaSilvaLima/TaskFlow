@@ -14,4 +14,5 @@ public interface UsuarioDAO {
     void delete(int id) throws SQLException;
     Usuario findByEmailESenha(String email, String senha) throws SQLException;
 
+    Usuario findByEmailESenhaNoImage(String email, String senha) throws SQLException;
 }

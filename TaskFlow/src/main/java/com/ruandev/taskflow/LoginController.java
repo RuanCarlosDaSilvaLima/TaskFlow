@@ -50,7 +50,7 @@ public class LoginController {
     }
 
     @FXML
-    private void togglePasswordVisibility(ActionEvent event) {
+    private void togglePasswordVisibility() {
         if (passwordVisible) {
             passwordField.setText(visiblePasswordField.getText());
             passwordField.setVisible(true);
@@ -69,6 +69,7 @@ public class LoginController {
     private void handleLogin(ActionEvent event) {
         String email = emailField.getText().trim();
         String senha = passwordVisible ? visiblePasswordField.getText() : passwordField.getText();
+
 
         if (email.isEmpty() || senha.isEmpty()) {
             showAlert("Erro de Login", "Por favor, preencha email e senha.");
