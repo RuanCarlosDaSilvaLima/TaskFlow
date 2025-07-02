@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" style="-fx-background-color: #0e1a2b;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ruandev.taskflow.fx.LoginView">
+   <children>
+      <AnchorPane layoutX="170.0" layoutY="206.0" prefHeight="613.0" prefWidth="1100.0" style="-fx-background-color: #162738; -fx-background-radius: 40;">
+         <children>
+            <AnchorPane prefHeight="613.0" prefWidth="550.0" style="-fx-background-color: #2979FF; -fx-background-radius: 40 0 0 40;">
+               <children>
+                  <Label alignment="CENTER" layoutX="149.0" layoutY="166.0" text="Bem vindo" textFill="WHITE">
+                     <font>
+                        <Font name="Ebrima Bold" size="50.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="108.0" layoutY="247.0" prefHeight="60.0" prefWidth="334.0" promptText="usuario" style="-fx-background-radius: 10; -fx-prompt-text-fill: #9aa6ad;">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField layoutX="108.0" layoutY="320.0" prefHeight="60.0" prefWidth="334.0" promptText="senha" style="-fx-background-radius: 10;">
+                     <font>
+                        <Font name="Ebrima" size="20.0" />
+                     </font>
+                  </PasswordField>
+                  <TextField layoutX="108.0" layoutY="320.0" prefHeight="60.0" prefWidth="334.0" promptText="senha" style="-fx-background-radius: 10; -fx-prompt-text-fill: #9aa6ad;">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="108.0" layoutY="418.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="334.0" style="-fx-background-radius: 10; -fx-background-color: #162738;" text="Entrar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="180.0" layoutY="496.0" text="Não tem conta? Crie sua conta ">
+                     <font>
+                        <Font name="Ebrima Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
