@@ -12,4 +12,6 @@ public interface UsuarioDAO {
     List<Usuario> findAll() throws SQLException;
     void update(Usuario usuario) throws SQLException;
     void delete(int id) throws SQLException;
+    Usuario findByEmailESenha(String email, String senha) throws SQLException;
+
 }

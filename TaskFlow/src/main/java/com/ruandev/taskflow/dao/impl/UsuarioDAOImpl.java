@@ -91,4 +91,28 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         usuario.setFotoPerfil(rs.getBytes("foto_perfil"));
         return usuario;
     }
+
+    @Override
+    public Usuario findByEmailESenha(String email, String senha) throws SQLException {
+        String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             stmt.setString(1, email);
+             stmt.setString(2, senha);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Usuario usuario = new Usuario();
+                    usuario.setId(rs.getInt("id_usuario"));
+                    usuario.setNome(rs.getString("nome"));
+                    usuario.setEmail(rs.getString("email"));
+                    usuario.setSenha(rs.getString("senha"));
+                    usuario.setFotoPerfil(rs.getBytes("foto"));
+                    return usuario;
+                }
+            }
+        }
+        return null;
+    }
+
 }
