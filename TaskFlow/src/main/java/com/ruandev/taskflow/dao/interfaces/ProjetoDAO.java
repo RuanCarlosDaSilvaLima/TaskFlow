@@ -11,4 +11,6 @@ public interface ProjetoDAO {
     List<Projeto> findAll() throws SQLException;
     void update(Projeto projeto) throws SQLException;
     void delete(int id) throws SQLException;
+    List<Projeto> findByUsuario(int usuarioId) throws SQLException;
+
 }

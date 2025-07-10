@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="com.ruandev.taskflow.fx.TarefaController"
+            prefWidth="360.0" prefHeight="520.0"
+            style="-fx-background-color: #dfe7eb; -fx-background-radius: 12;">
+
+    <VBox spacing="10.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <padding>
+            <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+        </padding>
+
+        <!-- Cabeçalho -->
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <Label fx:id="nomeTarefaLabel" text="Nome tarefa 1" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="statusLabel" text="concluído"
+                   style="-fx-background-color: #4CAF50; -fx-background-radius: 8; -fx-text-fill: white; -fx-padding: 4 10;" />
+        </HBox>
+
+        <!-- Data -->
+        <Label fx:id="dataPrazoLabel" text="dd/mm/aaaa" style="-fx-text-fill: #333;" />
+
+        <!-- Descrição -->
+        <Label fx:id="descricaoLabel" wrapText="true"
+               text="Aqui fica a descrição completa da tarefa com tudo exigido nela."
+               style="-fx-font-size: 14px; -fx-text-fill: #333;" />
+
+        <!-- Comentários -->
+        <VBox fx:id="comentariosBox" spacing="10.0">
+            <!-- Os comentários reais serão adicionados pelo Controller -->
+        </VBox>
+
+        <!-- Rodapé com ícones -->
+        <HBox spacing="20.0" alignment="CENTER_RIGHT">
+            <ImageView fitWidth="24.0" fitHeight="24.0" pickOnBounds="true" onMouseClicked="#abrirComentarios">
+                <image>
+                    <Image url="@../imagens/comentario-icone.png"/>
+                </image>
+            </ImageView>
+
+            <ImageView fitWidth="24.0" fitHeight="24.0" pickOnBounds="true" onMouseClicked="#fecharTarefa">
+                <image>
+                    <Image url="@../imagens/voltar-icone.png"/>
+                </image>
+            </ImageView>
+        </HBox>
+
+    </VBox>
+</AnchorPane>

@@ -85,4 +85,48 @@ public class ComentarioDAOImpl implements ComentarioDAO {
             stmt.executeUpdate();
         }
     }
+
+    @Override
+    public int contarPorTarefa(int idTarefa) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM Comentario WHERE id_tarefa = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idTarefa);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        }
+        return 0;
+    }
+
+    /**
+     * ✅ Novo método para buscar comentários por tarefa
+     */
+    public List<Comentario> findByTarefaId(int tarefaId) throws SQLException {
+        String sql = "SELECT * FROM Comentario WHERE id_tarefa = ?";
+        List<Comentario> comentarios = new ArrayList<>();
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, tarefaId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    comentarios.add(mapRow(rs));
+                }
+            }
+        }
+        return comentarios;
+    }
+
+    @Override
+    public void deleteByTarefaId(int tarefaId) throws SQLException {
+        String sql = "DELETE FROM Comentario WHERE id_tarefa = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, tarefaId);
+            stmt.executeUpdate();
+        }
+    }
+
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="837.0" prefWidth="1324.0" style="-fx-background-radius: 20; -fx-background-color: #162738;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ruandev.taskflow.fx.ProjetoController">
+
+   <children>
+
+      <!-- Top Bar com Nome do Projeto e Status -->
+      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" spacing="20.0">
+         <children>
+            <Label fx:id="projectNameLabel" text="Flow 1" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="statusButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #3A8DFF; -fx-background-radius: 15;" text="Pendente" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="15.0" />
+               </font>
+            </Button>
+            <Region fx:id="spacer" HBox.hgrow="ALWAYS" />
+            <MenuButton prefHeight="53.0" prefWidth="65.0" style="-fx-background-radius: 50%; -fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/confdiguracoes-icone.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <items>
+                  <MenuItem fx:id="editarProjetoItem" text="Editar Projeto" />
+                  <MenuItem fx:id="criarMetaItem" text="Criar Meta" />
+                  <MenuItem fx:id="editarMembrosItem" text="Editar Membros" />
+                  <MenuItem fx:id="sairItem" text="Fechar" />
+               </items>
+            </MenuButton>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+         <prefWidth>1324.0</prefWidth>
+      </HBox>
+
+      <!-- Área do board -->
+      <ScrollPane fitToHeight="true" fitToWidth="true" layoutY="80.0" prefHeight="757.0" prefWidth="1324.0" style="-fx-background-color:transparent;">
+         <content>
+            <HBox fx:id="metasContainer" spacing="20.0" style="-fx-background-color: #162738;">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </HBox>
+         </content>
+      </ScrollPane>
+
+   </children>
+</AnchorPane>

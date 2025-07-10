@@ -13,6 +13,6 @@ public interface UsuarioDAO {
     void update(Usuario usuario) throws SQLException;
     void delete(int id) throws SQLException;
     Usuario findByEmailESenha(String email, String senha) throws SQLException;
-
+    Usuario findByName(String nome) throws SQLException;
     Usuario findByEmailESenhaNoImage(String email, String senha) throws SQLException;
 }

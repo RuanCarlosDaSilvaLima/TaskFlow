@@ -4,18 +4,18 @@ import java.time.LocalDate;
 
 public class Meta {
     private Integer id;
-    private String nome;
+    private String titulo;     // ✅ corrigido!
     private LocalDate dataInicio;
     private LocalDate prazo;
-    private Integer idChefe;    // id_usuario do chefe responsável
-    private Integer idProjeto;  // Foreign key para projeto
+    private Integer idChefe;
+    private Integer idProjeto;
 
     // Getters e Setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
+    public String getTitulo() { return titulo; }         // ✅ corrigido
+    public void setTitulo(String titulo) { this.titulo = titulo; } // ✅ corrigido
 
     public LocalDate getDataInicio() { return dataInicio; }
     public void setDataInicio(LocalDate dataInicio) { this.dataInicio = dataInicio; }

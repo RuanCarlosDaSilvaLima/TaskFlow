@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="443.0" prefWidth="629.0"
+            style="-fx-background-color: #162738; -fx-background-radius: 30;"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.ruandev.taskflow.fx.EditarProjetoController">
+
+    <children>
+        <!-- Título -->
+        <Label layoutX="164.0" layoutY="52.0" text="Editando o Flow" textFill="WHITE">
+            <font>
+                <Font name="Ebrima Bold" size="40.0" />
+            </font>
+        </Label>
+
+        <!-- Nome do projeto -->
+        <TextField fx:id="nomeField" layoutX="100.0" layoutY="130.0" prefHeight="50.0" prefWidth="430.0"
+                   promptText="Nome do projeto" style="-fx-background-radius: 10;">
+            <font>
+                <Font name="Ebrima" size="20.0" />
+            </font>
+        </TextField>
+
+        <!-- Prazo -->
+        <DatePicker fx:id="prazoPicker" layoutX="100.0" layoutY="200.0" prefHeight="50.0" prefWidth="430.0"
+                    promptText="Prazo" style="-fx-background-radius: 10; -fx-font-size: 16;" />
+
+        <!-- Status usando MenuButton com itens -->
+        <MenuButton fx:id="statusMenuButton" layoutX="100.0" layoutY="270.0" prefHeight="50.0" prefWidth="430.0"
+                    style="-fx-background-radius: 10; -fx-background-color: #B0BEC5; -fx-font-size: 18;">
+            <items>
+                <MenuItem fx:id="ativoItem" text="Ativo" />
+                <MenuItem fx:id="arquivadoItem" text="Arquivado" />
+                <MenuItem fx:id="concluidoItem" text="Concluído" />
+                <MenuItem fx:id="canceladoItem" text="Cancelado" />
+            </items>
+        </MenuButton>
+
+        <!-- Botões -->
+        <Button fx:id="deletarButton" layoutX="59.0" layoutY="350.0" mnemonicParsing="false"
+                prefHeight="50.0" prefWidth="157.0"
+                style="-fx-background-color: #EF5350; -fx-background-radius: 10;"
+                text="Deletar" textFill="WHITE">
+            <font>
+                <Font name="Ebrima Bold" size="20.0" />
+            </font>
+        </Button>
+
+        <Button fx:id="cancelarButton" layoutX="237.0" layoutY="350.0" mnemonicParsing="false"
+                prefHeight="50.0" prefWidth="157.0"
+                style="-fx-background-color: #848484; -fx-background-radius: 10;"
+                text="Cancelar" textFill="WHITE">
+            <font>
+                <Font name="Ebrima Bold" size="20.0" />
+            </font>
+        </Button>
+
+        <Button fx:id="salvarButton" layoutX="415.0" layoutY="350.0" mnemonicParsing="false"
+                prefHeight="50.0" prefWidth="157.0"
+                style="-fx-background-color: #2979FF; -fx-background-radius: 10;"
+                text="Salvar" textFill="WHITE">
+            <font>
+                <Font name="Ebrima Bold" size="20.0" />
+            </font>
+        </Button>
+
+    </children>
+</AnchorPane>

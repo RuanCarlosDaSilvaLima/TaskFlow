@@ -6,7 +6,8 @@ import java.time.LocalDateTime;
 public class Tarefa {
     private Integer id;
     private String titulo;
-    private String status; // pendente, em_andamento, concluida, cancelada
+    private String descricao;    // <-- Adicionado
+    private String status;       // pendente, em_andamento, concluida, cancelada
     private LocalDateTime dataCriacao;
     private LocalDate prazo;
     private Integer idResponsavel;
@@ -18,6 +19,9 @@ public class Tarefa {
 
     public String getTitulo() { return titulo; }
     public void setTitulo(String titulo) { this.titulo = titulo; }
+
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }

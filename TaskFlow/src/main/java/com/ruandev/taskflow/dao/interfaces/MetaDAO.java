@@ -11,4 +11,6 @@ public interface MetaDAO {
     List<Meta> findAll() throws SQLException;
     void update(Meta meta) throws SQLException;
     void delete(int id) throws SQLException;
+    List<Meta> findByProjeto(int projetoId) throws SQLException;
+    List<Meta> findByProjetoId(int projetoId) throws SQLException;
 }

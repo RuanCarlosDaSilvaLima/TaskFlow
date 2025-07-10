@@ -1,4 +1,4 @@
-package com.ruandev.taskflow;
+package com.ruandev.taskflow.fx;
 
 import com.ruandev.taskflow.dao.DAOFactory;
 import com.ruandev.taskflow.dao.interfaces.UsuarioDAO;
@@ -11,7 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.scene.input.MouseEvent;
 
 public class RegisterController {
 

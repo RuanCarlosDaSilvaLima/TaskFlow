@@ -11,4 +11,7 @@ public interface TarefaDAO {
     List<Tarefa> findAll() throws SQLException;
     void update(Tarefa tarefa) throws SQLException;
     void delete(int id) throws SQLException;
+    int contarEmAndamento(int idProjeto) throws SQLException;
+    List<Tarefa> findByMeta(int metaId) throws SQLException;
+
 }

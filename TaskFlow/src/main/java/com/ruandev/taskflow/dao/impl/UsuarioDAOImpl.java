@@ -150,5 +150,25 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
         return null;
     }
+    @Override
+    public Usuario findByName(String nome) throws SQLException {
+        String sql = "SELECT * FROM Usuario WHERE nome = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, nome);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Usuario(
+                            rs.getInt("id_usuario"),
+                            rs.getString("nome"),
+                            rs.getString("email"),
+                            rs.getString("senha"),
+                            rs.getBytes("foto_perfil")
+                    );
+                }
+            }
+        }
+        return null;
+    }
 
 }

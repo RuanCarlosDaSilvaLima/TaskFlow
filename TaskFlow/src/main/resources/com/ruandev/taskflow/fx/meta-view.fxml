@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="698.0" prefWidth="340.0" style="-fx-background-color: #B0BEC5; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ruandev.taskflow.fx.MetaController">
+
+    <children>
+
+        <!-- Cabeçalho -->
+        <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="14.0" prefWidth="312.0" spacing="10.0">
+            <children>
+
+                <VBox spacing="2.0">
+                    <Label fx:id="tituloLabel" text="Nome da meta" textFill="#1D1D1D">
+                        <font>
+                            <Font name="Ebrima Bold" size="18.0" />
+                        </font>
+                  <VBox.margin>
+                     <Insets right="140.0" />
+                  </VBox.margin>
+                    </Label>
+                    <Label fx:id="prazoLabel" text="Prazo: -" textFill="#1D1D1D">
+                        <font>
+                            <Font name="Ebrima" size="16.0" />
+                        </font>
+                    </Label>
+                </VBox>
+
+                <MenuButton fx:id="menuButton" prefHeight="28.0" prefWidth="28.0" style="-fx-background-radius: 50%; -fx-background-color: transparent;">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" preserveRatio="true">
+                            <image>
+                                <Image url="@../imagens/confdiguracoes-icone.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <items>
+                        <MenuItem fx:id="editarMetaItem" text="Editar Meta" />
+                        <MenuItem fx:id="criarTarefaItem" text="Criar Tarefa" />
+                        <MenuItem fx:id="editarTarefaItem" text="Editar Tarefa" />
+                    </items>
+                </MenuButton>
+
+            </children>
+        </HBox>
+
+        <!-- Container das tarefas -->
+        <VBox fx:id="tarefasContainer" layoutX="14.0" layoutY="60.0" prefWidth="312.0" spacing="10.0" style="-fx-padding: 10;">
+        </VBox>
+
+    </children>
+</AnchorPane>

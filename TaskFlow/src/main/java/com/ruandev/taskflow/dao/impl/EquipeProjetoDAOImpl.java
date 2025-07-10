@@ -3,6 +3,7 @@ package com.ruandev.taskflow.dao.impl;
 import com.ruandev.taskflow.dao.interfaces.EquipeProjetoDAO;
 import com.ruandev.taskflow.db.DBConnection;
 import com.ruandev.taskflow.entities.EquipeProjeto;
+import com.ruandev.taskflow.entities.Usuario;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -81,4 +82,67 @@ public class EquipeProjetoDAOImpl implements EquipeProjetoDAO {
             stmt.executeUpdate();
         }
     }
+
+    // -------------------------------
+    // NOVOS MÉTODOS PARA EDITAR MEMBROS
+    // -------------------------------
+
+    @Override
+    public void adicionarMembro(int projetoId, int usuarioId) throws SQLException {
+        String sql = "INSERT INTO EquipeProjeto (id_usuario, id_projeto, papel, data_entrada) VALUES (?, ?, 'membro', CURRENT_DATE)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, usuarioId);
+            stmt.setInt(2, projetoId);
+            stmt.executeUpdate();
+        }
+    }
+
+    @Override
+    public void removerMembro(int projetoId, int usuarioId) throws SQLException {
+        String sql = "DELETE FROM EquipeProjeto WHERE id_usuario = ? AND id_projeto = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, usuarioId);
+            stmt.setInt(2, projetoId);
+            stmt.executeUpdate();
+        }
+    }
+
+    @Override
+    public List<Usuario> findUsuariosByProjeto(int projetoId) throws SQLException {
+        String sql = """
+            SELECT u.* FROM Usuario u
+            JOIN EquipeProjeto ep ON u.id_usuario = ep.id_usuario
+            WHERE ep.id_projeto = ?
+        """;
+
+        List<Usuario> usuarios = new ArrayList<>();
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, projetoId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Usuario u = new Usuario();
+                    u.setId(rs.getInt("id_usuario"));
+                    u.setNome(rs.getString("nome"));
+                    u.setEmail(rs.getString("email"));
+                    usuarios.add(u);
+                }
+            }
+        }
+
+        return usuarios;
+    }
+
+    @Override
+    public void deleteByProjetoId(int projetoId) throws SQLException {
+        String sql = "DELETE FROM EquipeProjeto WHERE id_projeto = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, projetoId);
+            stmt.executeUpdate();
+        }
+    }
+
 }

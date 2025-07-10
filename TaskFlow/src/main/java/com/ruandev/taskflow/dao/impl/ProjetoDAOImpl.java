@@ -102,4 +102,37 @@ public class ProjetoDAOImpl implements ProjetoDAO {
             stmt.executeUpdate();
         }
     }
+    @Override
+    public List<Projeto> findByUsuario(int idUsuario) throws SQLException {
+        String sql = """
+        SELECT p.id_projeto, p.nome, p.data_inicio, p.prazo, p.status_projeto
+        FROM Projeto p
+        JOIN EquipeProjeto e ON p.id_projeto = e.id_projeto
+        WHERE e.id_usuario = ?
+    """;
+
+        List<Projeto> lista = new ArrayList<>();
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, idUsuario);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Projeto projeto = new Projeto();
+                    projeto.setId(rs.getInt("id_projeto"));
+                    projeto.setNome(rs.getString("nome"));
+                    projeto.setDataInicio(rs.getDate("data_inicio").toLocalDate());
+                    Date prazoDate = rs.getDate("prazo");
+                    projeto.setPrazo(prazoDate != null ? prazoDate.toLocalDate() : null);
+                    projeto.setStatus(rs.getString("status_projeto"));
+                    lista.add(projeto);
+                }
+            }
+        }
+
+        return lista;
+    }
+
 }

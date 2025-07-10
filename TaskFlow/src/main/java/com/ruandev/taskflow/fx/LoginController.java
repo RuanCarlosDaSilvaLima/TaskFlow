@@ -1,5 +1,6 @@
-package com.ruandev.taskflow;
+package com.ruandev.taskflow.fx;
 
+import com.ruandev.taskflow.fx.Sessao;
 import com.ruandev.taskflow.dao.DAOFactory;
 import com.ruandev.taskflow.dao.interfaces.UsuarioDAO;
 import com.ruandev.taskflow.entities.Usuario;
@@ -70,7 +71,6 @@ public class LoginController {
         String email = emailField.getText().trim();
         String senha = passwordVisible ? visiblePasswordField.getText() : passwordField.getText();
 
-
         if (email.isEmpty() || senha.isEmpty()) {
             showAlert("Erro de Login", "Por favor, preencha email e senha.");
             return;
@@ -80,6 +80,7 @@ public class LoginController {
             Usuario usuario = usuarioDAO.findByEmailESenha(email, senha);
 
             if (usuario != null) {
+                Sessao.setUsuario(usuario); // 🔐 Guarda o usuário logado
                 abrirTelaPrincipal();
             } else {
                 showAlert("Login inválido", "Email ou senha incorretos.");
@@ -108,6 +109,7 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ruandev/taskflow/fx/workspace-view.fxml"));
             Stage stage = (Stage) entrarButton.getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Taskflow - Workspace");
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Erro", "Não foi possível abrir a tela principal.");

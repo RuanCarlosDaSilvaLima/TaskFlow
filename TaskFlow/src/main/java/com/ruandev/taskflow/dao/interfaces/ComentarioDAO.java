@@ -11,4 +11,7 @@ public interface ComentarioDAO {
     List<Comentario> findAll() throws SQLException;
     void update(Comentario comentario) throws SQLException;
     void delete(int id) throws SQLException;
+    int contarPorTarefa(int idTarefa) throws SQLException;
+
+    void deleteByTarefaId(int tarefaId) throws SQLException;
 }

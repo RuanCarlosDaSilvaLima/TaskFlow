@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="cardRoot" onMouseClicked="#abrirDetalhesTarefa" prefHeight="107.0" prefWidth="300.0" style="-fx-background-color: #D9D9D9; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ruandev.taskflow.fx.TarefaCardController">
+   <children>
+      <!-- Nome da tarefa -->
+      <Label fx:id="nomeLabel" layoutX="14.0" layoutY="14.0" text="Nome da tarefa">
+         <font>
+            <Font name="Ebrima Bold" size="16.0" />
+         </font>
+      </Label>
+
+      <!-- Status box com texto -->
+      <AnchorPane fx:id="statusBox" layoutX="209.0" layoutY="15.0" prefHeight="19.0" prefWidth="77.0" style="-fx-background-color: #66BB6A; -fx-background-radius: 4;">
+         <children>
+            <Label fx:id="statusTextLabel" layoutX="5.0" layoutY="2.0" text="concluido" textFill="WHITE">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+
+      <!-- Foto do responsável -->
+      <ImageView fx:id="usuarioImage" fitHeight="28.0" fitWidth="28.0" layoutX="267.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/icone-usuario.png" />
+         </image>
+      </ImageView>
+
+      <!-- Quantidade de comentários -->
+      <Label fx:id="comentariosLabel" layoutX="14.0" layoutY="73.0" text="2" textFill="#848484">
+         <font>
+            <Font name="Ebrima Bold" size="16.0" />
+         </font>
+      </Label>
+
+      <!-- Ícone de comentário -->
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="40.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/comentario-icone.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

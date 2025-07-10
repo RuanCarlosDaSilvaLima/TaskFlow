@@ -1,14 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.ruandev.taskflow.WorkspaceController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" style="-fx-background-color: #0E1A2B;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ruandev.taskflow.fx.WorkspaceController">
 
+   <children>
+      <!-- Todo o conteúdo principal -->
+      <BorderPane prefHeight="1024.0" prefWidth="1440.0" style="-fx-background-color: #0E1A2B;">
+
+         <!-- Barra superior -->
+         <top>
+            <HBox prefHeight="71.0" prefWidth="1440.0" spacing="20" style="-fx-background-color: #0E1A2B; -fx-padding: 0 20 0 20;">
+               <children>
+                  <!-- Logo -->
+                  <ImageView fitHeight="44" fitWidth="44" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/logo-taskflow-login.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="13.5" top="14.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label style="-fx-font-size: 36; -fx-font-weight: bold;" text="Task" textFill="white">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label style="-fx-font-size: 36;" text="Flow" textFill="white">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <MenuButton fx:id="flowspaceMenuButton" mnemonicParsing="false" prefHeight="64.0" prefWidth="258.0" style="-fx-background-color: #0E1A2B; -fx-mark-color: white; -fx-text-fill: white; -fx-font-size: 34;" text="Flowspace">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                  </MenuButton>
+
+                  <!-- Espaçador -->
+                  <Region prefHeight="71.0" prefWidth="327.0" HBox.hgrow="ALWAYS" />
+
+                  <!-- Avatar -->
+                  <MenuButton prefHeight="53.0" prefWidth="65.0" style="-fx-background-radius: 50%; -fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="46.0" fitWidth="46.0" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagens/icone-usuario.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <items>
+                        <MenuItem fx:id="configuracoesItem" text="Configurações" />
+                        <MenuItem fx:id="sairItem" text="Sair" />
+                     </items>
+                  </MenuButton>
+
+               </children>
+            </HBox>
+         </top>
+
+         <!-- Área central -->
+         <center>
+            <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+               <content>
+                  <FlowPane fx:id="projectCardsPane" hgap="30" style="-fx-background-color: #0E1A2B; -fx-padding: 30;" vgap="30" />
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+
+      <!-- Botão flutuante "+" -->
+      <Button fx:id="addButton" prefHeight="85" prefWidth="85" style="-fx-background-color: #2979FF; -fx-text-fill: white; -fx-font-size: 48; -fx-background-radius: 50%; -fx-border-radius: 50%;" text="+" AnchorPane.bottomAnchor="30" AnchorPane.rightAnchor="30" />
+   </children>
 </AnchorPane>

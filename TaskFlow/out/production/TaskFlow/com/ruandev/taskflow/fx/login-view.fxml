@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1440.0" style="-fx-background-color: #0e1a2b;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ruandev.taskflow.LoginController">
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" style="-fx-background-color: #0e1a2b;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ruandev.taskflow.fx.LoginController">
    <children>
       <AnchorPane layoutX="170.0" layoutY="206.0" prefHeight="613.0" prefWidth="1100.0" style="-fx-background-color: #162738; -fx-background-radius: 40;">
          <children>

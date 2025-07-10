@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="340.0" prefWidth="360" style="-fx-background-color: #dfe7eb; -fx-background-radius: 12;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ruandev.taskflow.fx.ComentarioController">
+
+    <VBox alignment="TOP_CENTER" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        </padding>
+
+        <!-- Título -->
+        <Label fx:id="tituloLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Tarefa 1" />
+
+        <!-- Caixa com comentário -->
+        <VBox alignment="TOP_LEFT" spacing="15.0" style="-fx-background-color: #cfd8dc; -fx-background-radius: 10;">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Comentário" />
+
+            <TextArea fx:id="comentarioTextArea" prefRowCount="6" promptText="Digite seu comentário..." style="-fx-background-radius: 10; -fx-font-size: 14px;" wrapText="true" />
+
+            <!-- Botões -->
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                <Button fx:id="cancelarButton" style="-fx-background-color: #848484; -fx-text-fill: white; -fx-background-radius: 10;" text="Cancelar" />
+                <Button fx:id="enviarButton" style="-fx-background-color: #2979FF; -fx-text-fill: white; -fx-background-radius: 10;" text="Enviar" />
+            </HBox>
+        </VBox>
+    </VBox>
+</AnchorPane>
